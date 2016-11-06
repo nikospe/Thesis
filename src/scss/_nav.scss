@@ -1,0 +1,40 @@
+nav {
+  ul {
+    list-style: none;
+    margin: 0 10px;
+    padding: 0;
+    li.subNav {
+      ul {                                          
+        display: none;
+      }
+      &:hover ul {
+        display: block;
+      }
+    }
+  }
+  a {
+    font-weight: 700;
+    padding: 12px 8px;
+  }
+  &.navbar-fixed-top {
+    border: 0;
+  }
+  &.navbar-inverse {
+    background: #0e2426;
+  }
+}
+.navbar-inverse .navbar-nav > .active > a {
+  background: $main-orange;
+  text-shadow: 0 0 4px $main-color;
+  &:hover {
+    background: rgba(167, 81, 11, 0.9);
+    text-shadow: 0 0 4px #0e2426;
+  }
+}
+.logo {
+  max-height: 50px;
+  display: inline;
+}
+#anthrwpaki {
+  max-height: 50px; 
+}

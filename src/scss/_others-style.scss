@@ -1,0 +1,91 @@
+.text-center {
+  text-align: center;
+}
+
+#company_name_in-user {
+  display: none;
+}
+#vertical_category_selector {
+  height: 35px;
+  width: 100%;
+}
+.panel {
+  margin-top: 55px;
+  .panel-heading {
+    background: #a7510b;
+    border: 1px solid #a7510b;
+    border-radius: 0;
+    color: black;
+  }
+}
+.panel-body {
+  border: 1px solid #a7510b;
+  border-radius: 0;
+}
+.p-size {
+  font-size: initial;
+}
+.optimize-center {
+  text-rendering: optimizeLegibility;
+  color: #3d464d;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 60px;
+  box-sizing: inherit;
+  display: block;
+  box-sizing: inherit;
+}
+.margintop {
+  margin-top: 100px;
+}
+.signup_table {
+  border: 2px solid rgba(14, 36, 38, 0.4);
+  border-radius: 0;
+  text-align: -webkit-center;
+}
+
+#form-container--add_new {
+  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-right: 45px;
+  #form-add_new {
+    margin-bottom: 0;
+  }
+}
+#form-add_new, #signup-new_user-form {
+  text-align: left;
+}
+
+#terms_conditions {
+  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-right: 45px;
+  padding-bottom: 125px;
+}
+#checkbox {
+  margin-left: 45px;
+}
+#company_name_form {
+  display: none;
+}
+
+#product-box{
+    position: absolute;
+    margin-left: 14px;
+    width: 100%;
+    padding-left: 12px;
+}
+.products-row {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.products {
+  padding: 20px;
+}
+.grey-background {
+    background: #d8d8d8;
+    color: gray;
+}
+.prod-name {
+  color: #a7510b;
+}

@@ -1,0 +1,62 @@
+.best_seens {
+  margin-top: 95px;
+  text-align: -webkit-center;
+}
+
+.white-background {
+  background: #f8f8f8;
+}
+
+.submain-color {
+  color: $main-orange;
+}
+
+#index_info {
+  max-width: 600px;
+}
+
+#service-search-bar{
+  display: none;
+}
+
+#store-search-bar{
+  display: none;
+}
+
+body#index .nav-pills {
+    width: 280px;
+    margin: auto;
+}
+
+.nav-pills {
+  font-weight: 700;
+  font-size: 16px;
+  padding-left: 40px;
+  >li>a {
+    color: white;
+    background: $main-color-transparent; 
+    
+    border: 0;
+    border-radius: 0;
+
+    &:hover, &:visited {
+      background: $main-color-transparent; 
+    }
+  }
+  >li.active>a {
+    background: $main-color;
+    &:focus, &:hover {
+      background: $main-color;
+      
+      border: 0;
+      border-radius: 0;
+    }
+    &:visited {
+      background: $main-color-transparent;
+    }
+  }
+}
+
+.col-md-7 {
+  padding: initial;
+}

@@ -1,0 +1,96 @@
+.my_header {
+  margin-top : 50px;
+  padding-left : 70px;
+  padding-right: 55px;
+  border-bottom: 1px solid #d0d4d9; 
+}
+
+.header_title {
+  color : $main-orange;
+  margin-top: 30px;
+  height: 56px;
+}
+.header_search {
+  padding-top: 15px;
+}
+
+.product-img {
+    width: 100%;
+}
+.shop-logo-row {
+  padding: 10px;
+  padding-top: 25px;
+  //border-right: 1px solid grey;
+}
+.rating-stars {
+  margin-top: 25px;
+}
+.shop-logo {
+  float : left;
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid #707070;
+}
+.stores-image {
+  width: 100px;
+  height: 50px;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+  top: 0;
+}
+.fixed {
+  position: fixed;
+  top: 70px;
+  height: 422px;
+  width: 285px;
+}
+.profile {
+  background: #fbfbfb;
+  padding: 15px;
+}
+.descript-stores {
+  //padding-left: 35px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+}
+.rating-button {
+  border: 1px solid #707070;
+  color : #707070;
+  padding : 3px;
+}
+.rating {
+  margin-left: 60px;
+}
+.stores-left {
+  left : 28%;
+}
+.stores-service-left {
+  left: 2%;
+}
+.keep-right {
+  margin-left: 70px;
+  margin-bottom: -232px;
+}
+.marg-left {
+  margin-left: 30px;
+}
+.bottom {
+  position: absolute;
+  //top: auto;
+  bottom: 0;
+}
+.google_map_none {
+  display: none;
+}
+
+.titles {
+  color: #1c7ece;
+}
+.addresses {
+  color: gray;
+}
