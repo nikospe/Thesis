@@ -1,6 +1,5 @@
 <?php
     require_once('../php/database_connect.php');
-
         
     if(isset($_POST["company_name"])) $company_name = $_POST['company_name'];
     if (preg_match('/[A-Za-z]/i', $company_name)) {
@@ -16,7 +15,6 @@
     if(isset($_POST["password"])){
         $password = md5($_POST['password']);
     }
-
     $stmt = $database_connection->prepare("INSERT INTO users (enterprise, company_name, firstname, lastname, email, username, password) "
             . "VALUES (?, ?, ?, ?, ?, ?, ?)");
     

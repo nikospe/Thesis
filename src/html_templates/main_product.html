@@ -1,0 +1,150 @@
+<div class="row my_header white-background shadow">
+    <div class="col-sm-2 col-md-2">
+        <strong><h1 class="header_title">Products</h1></strong>
+    </div>
+    <div class="col-sm-10 col-md-10 header_search">
+        <form action="product.html" class="form-group search-form-product" method="GET">
+            <p class="search-alert">Your search must contain at least 2 characters</p>
+            <div class="input-group" id="search_group">
+                <input type="text" autocomplete="off" class="form-control search-label" placeholder="Search for Product" name="search-product"
+                    id="search-product">
+                <ul class="dropdown-menu dropdown-menu-index" id="product-search-box"></ul>
+                <ul class="dropdown-menu dropdown-menu-index" id="product-search-box-empty">
+                    <li class="dropdown-item dropdown-item-insert">
+                        <span class="muted-text">No results found. </span><a href="javascript:;" data-toggle="modal" data-target="#insert-product-modal">Insert it!</a>
+                    </li>
+                </ul>
+                <div class="input-group-btn">
+                    <button class="btn btn-info search_buttons" value="Submit" type="submit"><i class="glyphicon glyphicon-search"></i>&nbsp;Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<main class="main-container relative">
+    <dynamically class="dynamically-div">
+    </dynamically>
+    <div class="row row-fix-bottom no-display">
+        <div class="col-md-12 white-background descript-stores text-center">
+            <span><img src="icons/no-result.png" style="width:90px; height:90px;"></span>
+            <h3>No results for
+                <p id="prod-tit"></p>
+            </h3>
+        </div>
+    </div>
+    <div class="empty-page">
+        <div class="row">
+            <h4 class="addresses text-center">
+                <i class='glyphicon glyphicon-star-semi'></i> Best five products
+                <i class='glyphicon glyphicon-star-semi'></i>
+            </h4>
+            <div class="col-md-3 col-sm-12 text-center shadow-3 box-size green-background" id="p0">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+            <div class="col-md-3 col-sm-12 text-center shadow-3 box-size gray-background" id="p1">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+            <div class="col-md-3 col-sm-12 text-center shadow-3 box-size brown-background" id="p2">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-sm-12 text-center shadow-3 box-size blue-background box-left" id="p3">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+            <div class="col-md-5 col-sm-12 text-center shadow-3 box-size purple-background box-left" id="p4">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+        </div>
+    </div>
+    <div class="for-display">
+        <div class="row marg-left">
+            <div class="col-md-3 profile shadow visible-lg-block absolute" id="profile">
+                <img class="product-img" src="icons/Products.jpg" align="middle" id="product-image">
+                <h4 id="prod-title"></h4>
+                <hr>
+                <h4 class="submain-color">General rate:</h4>
+                <div class="stable-rating">
+                </div>
+            </div>
+            <div id="product-info" class="col-md-8 descript-stores shadow-3 white-background stores stores-left">
+                <h3 id="product-title" class="titles"></h3>
+                <h3 id="product-type" class="addresses"></h3>
+                <h4 id="product-description"></h4>
+                <hr>
+                <h4 class="submain-color">General rate:</h4>
+                <div class="stable-rating">
+                </div>
+                <hr>
+                <div class="row marg">
+                    <div class="col-md-4">
+                        <a class="rating-button" href="#rating-row">
+                            Rate this product 
+                            <span class="glyphicon glyphicon-chevron-right main-blue"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="rating-button add-buttons" href="#" data-toggle="modal" data-target="#insert-store-modal">
+                            Add store for this product 
+                            <span class="glyphicon glyphicon-chevron-right main-blue"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="rating-button add-buttons" href="#" data-toggle="modal" data-target="#insert-product-modal">
+                            Add new product 
+                            <span class="glyphicon glyphicon-chevron-right main-blue"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <dyn-stores class="dyn_stores">
+        </dyn-stores>
+        <div class="row row-fix-bottom" id="rating-row"></div>
+        <div class="fix-row">
+            <div class="row .marg-left marg rating-row">
+                <div class="col-md-8 white-background shadow-3 marg rate-left">
+                    <h4 class="submain-color">Rate this product!</h4>
+                    <form id="productRate">
+                        <h4 id="leave-blank" style="display:none;">Title and rating must not be empty!</h4>
+                        <input name="rate-title" id="rate-title" placeholder="Give a description for yor rating!" type="text" />
+                        <input name="rate-product" id="rate-product" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="lg">
+                        <button class="btn btn-success marg dis" value="Submit" type="submit" disabled>Rate!</button>
+                    </form>
+                    <hr>
+                    <div id="product-comments-list">
+                    </div>
+                    <div id="product-ratings-list">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</div>

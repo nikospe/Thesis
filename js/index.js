@@ -22,3 +22,5 @@ function updateSearchFields(type) {
         $('#service-search-bar').css('display', 'none');
     }
 }
+
+

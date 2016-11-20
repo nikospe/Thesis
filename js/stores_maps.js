@@ -1,9 +1,8 @@
-function myMap() {
-    var mapCanvas = document.getElementById("map");    
+function storeMap(address, id) {
+    var mapCanvas = document.getElementById(id);    
     var geocoder;
     geocoder = new google.maps.Geocoder();
-
-    geocoder.geocode( { 'address': 'Ομήρου 9, Ταύρος, Ελλάδα'}, function(results, status) {
+    geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
@@ -15,7 +14,6 @@ function myMap() {
       }
     });
     var mapOptions = ({
-        //center: myCenter,
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.HYBRID
     });

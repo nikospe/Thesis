@@ -1,0 +1,16 @@
+<!DOCTYPE>
+<html lang="el">
+    @gulp@include('html_templates/head.html')
+<body>
+    @gulp@include('html_templates/nav.html',{
+        "index": "",
+        "best_products" : "",
+        "best_stores" : "",
+        "aboutus" : "",
+        "signup" : "active"
+    })    
+    @gulp@include('html_templates/main_user.html')
+    @gulp@include('html_templates/modals_scripts.html')
+    <script src="js/user.js"></script>
+</body>
+</html>

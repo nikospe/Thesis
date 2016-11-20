@@ -3,8 +3,6 @@
 
     if(isset($_POST["vertical_category_selector"])) $vertical_category_selector = $_POST['vertical_category_selector'];
     if(isset($_POST["service_name"])) $service_name = $_POST['service_name'];   
-    // if(isset($_POST["store_name"])) $store_name = $_POST['store_name'];
-    // if(isset($_POST["address"])) $address = $_POST['address'];
 
     $stmt = $database_connection->prepare("INSERT INTO services (type,name) "
             . "VALUES (?,?)");

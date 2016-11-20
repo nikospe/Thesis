@@ -1,26 +1,32 @@
 .my_header {
   margin-top : 50px;
-  padding-left : 70px;
-  padding-right: 55px;
+  padding-left : 20px;
+  padding-right: 20px;
   border-bottom: 1px solid #d0d4d9; 
 }
 
 .header_title {
   color : $main-orange;
-  margin-top: 30px;
-  height: 56px;
+  margin-top: 25px;
 }
 .header_search {
-  padding-top: 15px;
+  padding-top: 10px;
 }
-
+.marg-ten{
+  margin-top: 15px;
+}
 .product-img {
-    width: 100%;
+    width: 85%;
 }
 .shop-logo-row {
   padding: 10px;
-  padding-top: 25px;
-  //border-right: 1px solid grey;
+  border-right: 1px solid lightgray;
+}
+.fif {
+  margin-top: 55px;
+}
+.comment-box {
+  padding-left: 0;
 }
 .rating-stars {
   margin-top: 25px;
@@ -40,57 +46,76 @@
 }
 .absolute {
   position: absolute;
+  //height: 465px;
+  //width: 285px;
   top: 0;
 }
 .fixed {
   position: fixed;
   top: 70px;
-  height: 422px;
-  width: 285px;
+  //height: 465px;
+  //width: 285px;
 }
 .profile {
-  background: #fbfbfb;
+  background: white;
   padding: 15px;
 }
 .descript-stores {
-  //padding-left: 35px;
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 20px;
 }
-.rating-button {
-  border: 1px solid #707070;
-  color : #707070;
-  padding : 3px;
-}
-.rating {
-  margin-left: 60px;
-}
+
 .stores-left {
   left : 28%;
 }
+.rate-left {
+  width: 64%;
+  left: 31%;
+}
+
+#rate-title {
+  height: 35px;
+  width: 490px;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
 .stores-service-left {
-  left: 2%;
+  left: 360px;
+  width: 750px;
 }
 .keep-right {
-  margin-left: 70px;
-  margin-bottom: -232px;
+  position: absolute;
+  left: 2%;
 }
 .marg-left {
   margin-left: 30px;
 }
 .bottom {
   position: absolute;
-  //top: auto;
   bottom: 0;
 }
 .google_map_none {
   display: none;
 }
-
+.text_to_end {
+  text-align: end;
+}
+#title {
+  width: 327px;
+  height: 30px;
+  margin-bottom: 15px;
+}
 .titles {
-  color: #1c7ece;
+  color: $main-blue;
 }
 .addresses {
   color: gray;
+}
+.inlineClass {
+  display: inline;
+}
+.empty-page {
+  display: none;
 }

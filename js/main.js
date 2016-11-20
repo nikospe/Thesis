@@ -1,20 +1,13 @@
 /**Display username after login and logout link */
 $.post('ajax/get_session.php', null, function (data) {
     if (data.username) {
-        $('#anthrwpaki').html('<a href="user.html">' + data.username + '</a>');
+        $('#anthrwpaki').html('<a href="user.html" class="capitals">' + data.username + '</a>');
         var txt = '<li><a href="#" data-toggle="modal" data-target="#myModal2">Logout!</a></li>';
         $('#anthrwpaki').after(txt);
         $('#insert').css('display', 'block');
         $('#insert-service').css('display', 'block');
         $('#index_info_hide').css('display', 'none');
         $('#index_info_hide2').css('display', 'none');
-
-        var element = $('#add-comment-disabled');        
-        element.removeClass('iflogout');
-        element.addClass('iflogin');
-        var element2 = $('#add-comment-enable');
-        element2.removeClass('iflogin');
-        element2.addClass('iflogout');
     }
     else {
         $('.add-buttons').on('show.bs.modal', function (e) {
@@ -23,17 +16,49 @@ $.post('ajax/get_session.php', null, function (data) {
         });
     }
 }, 'json');
+function checkDivs () {
+    $.post('ajax/get_session.php', null, function (data) {
+        if (data.username) {
+            $('.dis').prop("disabled", false);
+            $('.rating-container').removeClass('rating-disabled');
+         }
+    }, 'json');
+}
+
+var urlParams = getUrlParams();
+function getUrlParams() {
+  var query = location.search.substr(1);
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]).replace(/\+/g,' ');
+  });
+  return result;
+}
 
 /**Check if data for loging in is correct */
 $('#signin-form').submit(function (event) {
     event.preventDefault();
-    $.post('ajax/check_login.php', $(this).serialize(), function (data) {
-        if (data.user_found) {
-            window.location = window.location.href;
-        } else if (data.mysql_error) {
-            alert(data.mysql_error);
+    if ( !( $('#login_username').val().length < 3 || $('#login_username').val().length > 20 ) ) {
+        if ( !( $('#login_password').val().length < 3 || $('#login_password').val().length > 20 ) ) {
+            $.post('ajax/check_login.php', $(this).serialize(), function (data) {                
+                if (data.user_found) {
+                    window.location = window.location.href;
+                } else if (data.mysql_error) {
+                    alert(data.mysql_error);
+                }
+                else {
+                    $('#login-check').show();
+                }
+            }, 'json');
         }
-    }, 'json');
+        else {
+            $('.names-check').show();
+        }
+    }
+    else {
+        $('.names-check').show();
+    }
 });
 /**Function to destroy session and log out */
 function logout() {
@@ -60,7 +85,6 @@ $(document).ready(function(){
     $('.search-form-service').submit(function (event) {
         var input = $(this).serialize();
         input = input.split("=");
-        //debugger
         input=input[input.length-1];
         if ( input.length < 2 ){
             $('#service-alert').css('visibility', 'visible');
@@ -176,21 +200,34 @@ function put_value(str){
     }
 }
 
+function drawRatingStars(num) {
+    var FULL_STAR = '<i class="display-star glyphicon glyphicon-star"></i>';
+    var SEMI_STAR = '<i class="display-star glyphicon glyphicon-star-semi"></i>';
+    var EMPTY_STAR = '<i class="display-star glyphicon glyphicon-star-empty"></i>';
 
-// $("#input-image-3").fileinput({
-//     uploadUrl: "/site/image-upload",
-//     allowedFileExtensions: ["jpg", "png", "gif"],
-//     maxImageWidth: 200,
-//     maxImageHeight: 150,
-//     resizePreference: 'height',
-//     maxFileCount: 1,
-//     resizeImage: true
-// }).on('filepreupload', function() {
-//     $('#kv-success-box').html('');
-// }).on('fileuploaded', function(event, data) {
-//     $('#kv-success-box').append(data.response.link);
-//     $('#kv-success-modal').modal('show');
-// });
+    var result = FULL_STAR.repeat( parseInt(num) );
+    if (num % 1) result += SEMI_STAR;
+    result += EMPTY_STAR.repeat( 5 - parseInt( Math.round(num) ) );
+
+    return result;
+}
+$.post('ajax/get_best_products.php', {limit: 5}, function (response) {
+    if (response.error) {
+        alert(response.error);
+        return;
+    }
+
+    for ( var product of response.products ) {
+        var index = response.products.indexOf(product);
+        var $el = $('#p' + index);
+        product.avg =  Number( Math.round( (product.avg/2) * 2 ) / 2 );
+
+        $el.find('.prod-name').text(product.name); 
+        $el.find('.prod-type').text(product.type); 
+        $el.find('.prod-avg').html( drawRatingStars(product.avg) + '(' + product.avg + ')' ); 
+    }
+
+}, 'json');
 
 var autocomplete;
 function initAutocomplete() {
@@ -202,24 +239,24 @@ function initAutocomplete() {
 }
 
 function addressSelected() {
-    var place = autocomplete.getPlace();
+    // var place = autocomplete.getPlace();
 
-    var temp = place.formatted_address.split(",");
-    var address = temp[0];
-    var regionPostalCode = temp[1];
+    // var temp = place.formatted_address.split(",");
+    // var address = temp[0];
+    // var regionPostalCode = temp[1];
 
-     var mdata = {'id' : place.id, 'url' : place.url,
-     'streetNumber' : place.address_components[0].long_name,
-     'streetName' : place.address_components[1].long_name,
-     'areaName' : place.address_components[2].long_name,
-     'countryName' : place.address_components[6].long_name,
-     'postalcode' : place.address_components[7].long_name};
-    if ( !place.address_components[7].long_name ) {
-        mdata = {'town' : place.address_components[0].long_name,
-        'area' : place.address_components[3].long_name,
-        'countryName' : place.address_components[6].long_name};
-    }
-    console.log(mdata);
+    //  var mdata = {'id' : place.id, 'url' : place.url,
+    //  'streetNumber' : place.address_components[0].long_name,
+    //  'streetName' : place.address_components[1].long_name,
+    //  'areaName' : place.address_components[2].long_name,
+    //  'countryName' : place.address_components[6].long_name,
+    //  'postalcode' : place.address_components[7].long_name};
+    // if ( !place.address_components[7].long_name ) {
+    //     mdata = {'town' : place.address_components[0].long_name,
+    //     'area' : place.address_components[3].long_name,
+    //     'countryName' : place.address_components[6].long_name};
+    // }
+    // console.log(mdata);
 }
 
 var element = $('.test');

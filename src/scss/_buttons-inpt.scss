@@ -44,6 +44,9 @@ input {
     text-shadow: none;
     outline: none;
   }
+  &:hover {
+    color: dodgerblue;
+  }
 }
 
 .butoons_row {
@@ -52,13 +55,11 @@ input {
 }
 
 .search_buttons {
-    height: auto;
-    width: auto;
+    height: 40px;
+    margin-top: 5px;
     background: $main-orange;
     color: white;
     border: 1px solid #a7510b;
-    padding-bottom: 16%;
-    padding-top: 16%;
     &:hover {
       background: $main-orange;
     }
@@ -75,14 +76,15 @@ input {
 }
 .search-label {
   border: 1px solid $main-orange;
-  height: 50px;
+  height: 40px;
+  margin-top: 5px;
 }
 .search-input {
   border: 1px solid $main-orange;
 }
 .r-inline {
   display: inline-flex;
-  padding: 7px;
+  padding: 2px;
   margin: auto;
 }
 .insert-but { 
@@ -90,4 +92,10 @@ input {
   width: 75%;   
   padding-bottom: 9%;
   padding-top: 9%;
+}
+
+.rating-button {
+  border: 1px solid $main-blue;
+  color : #707070;
+  padding : 3px;
 }

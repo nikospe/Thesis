@@ -8,7 +8,7 @@
 
     $sql = "SELECT * FROM users WHERE username = '$username' and password = '$password' ";
     $result = $database_connection->query($sql); 
-    if ($result){
+    if ( mysqli_num_rows($result) > 0 ) {
         $username_retrieved = mysqli_fetch_assoc($result)['username'];
         
         session_start();

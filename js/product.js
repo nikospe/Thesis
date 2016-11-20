@@ -1,17 +1,52 @@
+checkDivs();
 var productId = '';
+
+function ShowProdRatings(){ 
+    var prodData = { 'id' : productId }; 
+    $.post('ajax/select_product_ratings.php', prodData, function (data) {                    
+        var ratings = data.ratings;
+        if ( ratings.length ) {
+            $("<h4 class='submain-color marg'>Ratings: </h4><hr>").appendTo( "#product-ratings-list" );
+            for( var rating of ratings ) { 
+                rating.rating_strength = rating.rating_strength / 2;
+                $("<h4 class='capitals'><b>"+rating.username+"</b></h4>"
+                +"<h5>"+rating.title+"</h5>"   
+                +"<h5>Rate: ("+rating.rating_strength+" / 5)</h5>"            
+                +"<h6 class='text_to_end'>"+rating.time+"</h6>"           
+                +"<hr>").appendTo( "#product-ratings-list" );                
+            }
+        }
+    }, 'json'); 
+}
+
+function productRating() {
+    rdata = { 'id' : productId };
+    $.post('ajax/get_product_rating.php', rdata, function (response) {
+        if (response.error) {
+            alert(response.error);
+            return;
+        }
+        for ( var rating of response.rating ) {
+            var $el = $('.stable-rating');
+            rating.rAvg =  Number( Math.round( (rating.rAvg/2) * 2 ) / 2 );
+
+            $el.html( drawRatingStars(rating.rAvg) + '(' + rating.rAvg + ')' ); 
+        }         
+    }, 'json');
+}
+
+
 $(window).scroll( function() {
     var element = $('.profile');
     if ( $(document).scrollTop() > 128 ) {
         element.removeClass('absolute'); 
-        var elemTop = $('.footer-header').offset().top - 135;
+        var elemTop2 = $('.footer-header').offset().top - 145;
         var height = $('.profile').height();
         var width = $('.profile').width();
-        var heightt = $('.comment-row').height();
-        var height2 = $('.rating').height();
-        var temp = elemTop - height - heightt - height2 - 155;
+        var temp = elemTop2 - height -50;
         element.addClass('fixed');
-        //$('#profile').css('height', (height+30));
-        //$('#profile').css('width', (width+30));
+        $('.fixed').css('height', (height+30));
+        $('.fixed').css('width', (width+30));
         if ( $(document).scrollTop() >= temp) {
             element.removeClass('fixed');
             element.addClass('bottom');
@@ -44,108 +79,96 @@ $(window).resize(function() {
     }
 });
 
-var temp = window.location.search.substring(1);
-if (temp.length > 0) {
-    var res = temp.split("=");
-    if ( res[0] == "id" ) {
-        var str = res[1];
-        var id = parseInt(str);
-        var mdata = {'id' : id};
 
-        $.post('ajax/get_product.php', mdata, function (data) {
+if ( urlParams.hasOwnProperty('id') ) {
+        $.post('ajax/get_product.php', urlParams, function (data) {
             if(data.product){
                 $('.no-display').hide();
+                $('.empty-page').hide();
                 $('.for-display').show();
                 var product = data.product;
-                //document.getElementById("product-image").src = "icons/apple.png"
                 $('#prod-title').html(product.name);
                 $('#product-title').html(product.name);
                 $('#product-type').html(product.type);
                 $('#product-description').html(product.description);
                 $('#element').attr("placeholder", product.name);
                 productId = product.id;
+                storesLoad();
+                productRating();
+                ShowProdRatings();
             } 
-            else {
-                $('.for-display').hide();
-                $('.no-display').show();
+            else {                
+                $('.for-display').hide();                
             }        
         }, 'json');
+}
+else if ( !('' in urlParams) ) {
+    if ( urlParams.hasOwnProperty('search-product') ){
+        mdata = { 'name' : urlParams['search-product'] }
+    } else {
+        mdata = { 'name' : decodeURIComponent(Object.keys(urlParams)[0]) }
     }
-    else {
-        if ( res.length == 1 ) {
-            var str = res[0];
-            temp = str.split("%20");
-            if ( temp.length == 1 ){
-                str = temp[0];
-                var mdata = {'name' : str};
-            }
-            else {
-                str = "";
-                for (i=0;i<temp.length;i++) {
-                    if( i == (temp.length-1) ) {
-                        str = str + temp[i];
-                    }
-                    else {
-                        str = str + temp[i] + " ";
-                    }
-                }
-                var mdata = {'name' : str};
-            }
+    $.post('ajax/get_product_by_name.php', mdata, function (data) {            
+        var products = data.product;
+        if ( !products.length ) {
+            $('.for-display').hide();
+            $('.dynamically-row').hide();
+            $('.no-display').show();
+            $('.empty-page').show();                        
+            $('#prod-tit').html(mdata.name);                
+            return;
+        }
+
+        if ( products.length == 1 ) {
+            $('.no-display').hide();
+            $('.dynamically-row').hide();
+            $('.empty-page').hide();
+            $('.for-display').show(); 
+            $('#prod-title').html(products[0].name);
+            $('#product-title').html(products[0].name);
+            $('#product-type').html(products[0].type);
+            $('#product-description').html(products[0].description);
+            productId = products[0].id;
+            $('#element').attr("placeholder", products[0].name);
         }
         else {
-            var str = res[1];
-            temp = str.split("+");
-            if(temp.length > 1) {
-                str = "";
-                for (i=0;i<temp.length;i++) {
-                    if( i == (temp.length-1) ) {
-                        str = str + temp[i];
-                    }
-                    else {
-                        str = str + temp[i] + " ";
-                    }
-                }
-                var mdata = {'name' : str};
-            }
-            else {
-                str = temp[0];
-                var mdata = {'name' : str};
-            }
+            $('.no-display').hide();
+            $('.for-display').hide();                
+            $('dynamically').show();                      
+            for ( item of products ){                        
+                $("<div class='row row-fix-bottom products-row'>"
+                +"<div class='col-md-12 grey-background products'><h4>"
+                +"Product: <a class='title' href='product.html?id="+item.id
+                +"'>"+item.name+"</a></h4><h4 class='submain-color'><span class='black'>Category: </span>"+item.type
+                +"</h4><h4 class='submain-color'><span class='black'>Description: </span>"+item.description
+                +"</h4></div></div>").appendTo("dynamically");  
+            }                
         }
-        $.post('ajax/get_product_by_name.php', mdata, function (data) {            
-            var products = data.product;
-            if ( !products.length ) {
-                $('.for-display').hide();
-                $('.dynamically-row').hide();
-                $('.no-display').show();            
-                $('#prod-tit').html(mdata.name);                
-                return;
-            }
-
-            if ( products.length == 1 ) {
-                $('.no-display').hide();
-                $('.dynamically-row').hide();
-                $('.for-display').show(); 
-                $('#prod-title').html(products[0].name);
-                $('#product-title').html(products[0].name);
-                $('#product-type').html(products[0].type);
-                $('#product-description').html(products[0].description);
-                productId = products[0].id;
-                $('#element').attr("placeholder", products[0].name);
-                //$('#element').val(productId);
-            }
-            else {
-                $('.no-display').hide();
-                $('.for-display').hide();
-                $('dynamically').show();
-                for ( item of products ){                        
-                    $("<div class='row row-fix-bottom products-row'>"
-                    +"<div class='col-md-12 grey-background products'><h4><u>Product</u>: <a class='prod-name' href='product.html?"+item.name
-                    +"'>"+item.name+"</a></h4><h4><u>Category</u>: "+item.type
-                    +"</h4><h4><u>Description</u>: "+item.description
-                    +"</h4></div></div>").appendTo("dynamically");  
-                }
-            }
-        }, 'json');
-    }
+        storesLoad();
+        productRating();
+        ShowProdRatings();
+    }, 'json');
 }
+else {
+    $('.empty-page').show();
+}
+
+$.getScript("js/star-rating.js", function(){         
+            }); 
+
+$('#productRate').submit(function( event ) {
+    event.preventDefault();   
+    if ( $('#rate-title').val() == 0 || $('#rate-product').val() == 0 ) {
+        $('#leave-blank').show();
+    }         
+    else {
+        var mData = $(this).serialize().concat( '&id='+productId );   
+        $.post('ajax/insert_product_rating.php', mData, function (data) {                
+            if (data.mysql_query_status) {
+                window.location = window.location.href;
+            } else if (data.mysql_error) {
+                alert(data.mysql_error);
+            }
+        }, 'json');  
+    }           
+});

@@ -1,4 +1,2 @@
-*.html
 nbproject
-php
-css
+node_modules

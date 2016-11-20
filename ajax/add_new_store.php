@@ -4,7 +4,7 @@
     if(isset($_POST["store_name"])) $store_name = $_POST['store_name'];
     if(isset($_POST["address"])) $address = $_POST['address'];
     if(isset($_POST["id"])) $id = $_POST['id'];
-    if(isset($_POST["service"])) $service = $_POST['service'];
+    if(isset($_POST["service"])) $serv = $_POST['service'];
 
     $stmt = $database_connection->prepare("INSERT INTO stores (name, address) "
             . "VALUES (?, ?)");
@@ -12,7 +12,7 @@
     $response['mysql_query_status'] = $stmt->execute();
     $storeId = mysqli_insert_id($database_connection);
 
-    if( $service == 'service' ) {
+    if( $serv == 'service' ) {
         $stmt2 = $database_connection->prepare("INSERT INTO services_to_stores (serv_id, store_id) "
                 . "VALUES (?, ?)");
         $stmt2->bind_param('si', $id, $storeId);    

@@ -1,11 +1,11 @@
 html, body {
-  background-color: #f1f1f1;   //#fbfbfb
+  background-color: #e9ebee;     // #f1f1f1;   //#fbfbfb
   width: 100%; 
   position: relative;
 }
 
 main.main-container {
-  margin-top: 55px;
+  margin-top: 45px;
 }
 .row-fix-bottom {
  margin-bottom: 55px; 
@@ -52,7 +52,7 @@ main.main-container {
     top: 20px;
 }
 .marg {
-  margin-top: 15px;
+  margin-top: 25px;
 }
 .myModal-content {
     width: 325px;
@@ -67,7 +67,9 @@ main.main-container {
 div.pac-container.pac-logo::after {
   display: none;
 }
-
+.capitals {
+  text-transform: capitalize;
+}
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-family: sans-serif;
 }
@@ -77,7 +79,6 @@ p {
 
 #service-searched {
   display: initial;
-  color: $main-orange;
 }
 .search-alert {
   visibility: hidden;
@@ -114,4 +115,56 @@ p {
 }
 dynamically.dynamically-div {
   display: none;
+}
+hr {
+  border-top: 1px solid lightgray;
+}
+.names-check {
+  display: none;
+}
+.styled {
+  height: 35px;
+  width: 100%;
+}
+.shadow {
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
+}
+.shadow-3 {
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.3);
+}
+.left-right-shadow{
+      box-shadow: -5px 0 5px -4px rgba(0,0,0,0.3),5px 0 5px -3px rgba(0,0,0,0.3);
+}
+
+.display-star {
+  color: #fde16d;
+  text-shadow: 0px 1px 1px darkgray;
+  font-size: xx-large;
+}
+.glyphicon-star-empty {
+  color: darkgray;
+}
+
+.glyphicon-star-semi {
+  &:before {
+    content: "\e007";
+    color: darkgray;
+    position: relative;
+  }
+  &:after {
+    content: "\e006";    
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 49%;
+    overflow: hidden;
+  }
+}
+.box-size {
+  width: 360px;
+  height: 220px;
+  margin: 5px;
+}
+.box-left {
+  left: 15%;
 }

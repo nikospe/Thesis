@@ -1,0 +1,17 @@
+<!DOCTYPE>
+<html lang="el">
+    @gulp@include('html_templates/head.html')
+<body>
+    @gulp@include('html_templates/nav.html',{
+        "index": "",
+        "best_products" : "",
+        "best_stores" : "",
+        "aboutus" : "active",
+        "signup" : ""
+    })     
+    @gulp@include('html_templates/main_aboutus.html')
+    @gulp@include('html_templates/modals_scripts.html')
+    <script src="js/google_map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk82zSKgouEkxAhwk0eKnxM3j1ZKXW7t0&libraries=places&callback=myMap"></script> 
+</body>
+</html>

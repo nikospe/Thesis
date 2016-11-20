@@ -1,0 +1,19 @@
+<!DOCTYPE>
+<html lang="el">
+    @gulp@include('html_templates/head.html')
+<body>    
+    @gulp@include('html_templates/nav.html',{
+        "index": "",
+        "best_products" : "active",
+        "best_stores" : "",
+        "aboutus" : "",
+        "signup" : ""
+    })   
+    @gulp@include('html_templates/main_product.html')
+    @gulp@include('html_templates/modals_scripts.html')
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk82zSKgouEkxAhwk0eKnxM3j1ZKXW7t0&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="js/stores_maps.js"></script>
+    <script src="js/in_stores.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>

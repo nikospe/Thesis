@@ -1,0 +1,189 @@
+</div>
+<div class="row my_header back-img">
+    <div class="col-md-12 visible-lg-block">
+        <strong><h1 class="header_title">Products & services rating</h1></strong>
+    </div>
+    <div class="row">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="javascript:;" onclick="setActiveNavPill(0)">
+                Products</a></li>
+            <li><a href="javascript:;" onclick="setActiveNavPill(1)">
+                Services</a></li>
+        </ul>
+    </div>
+    <div class="row" id="product-search-bar">
+        <div class="col-sm-12 col-md-12 header_search">
+            <form class="form-group search-form-product" action="product.html" method="GET">
+                <p class="search-alert">Your search must contain at least 2 characters
+                    <p>
+                        <div class="input-group" id="search_group">
+                            <input type="text" autocomplete="off" class="form-control search-label" placeholder="Search for Product" name="search-product"
+                                id="search-product">
+                            <ul class="dropdown-menu dropdown-menu-index" id="product-search-box" role="listbox"></ul>
+                            <ul class="dropdown-menu dropdown-menu-index" id="product-search-box-empty">
+                                <li class="dropdown-item dropdown-item-insert">
+                                    <span class="muted-text">No results found. </span><a href="javascript:;" data-toggle="modal"
+                                        data-target="#insert-product-modal">Insert it!</a>
+                                </li>
+                            </ul>
+                            <div class="input-group-btn">
+                                <button class="btn btn-success search_buttons" value="Submit" type="submit"><i class="glyphicon glyphicon-search"></i>&nbsp;Search</button>
+                            </div>
+                        </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" id="service-search-bar">
+        <div class="col-sm-12 col-md-12 header_search">
+            <form class="form-group search-form-service" action="service.html" method="GET">
+                <p id="service-alert">Your search must contain at least 2 characters
+                    <p>
+                        <div class="search-label marg-ten">
+                            <div class="row test r-inline">
+                                <div class="col-md-7 col-sm-12 col-xs-12">
+                                    <input type="text" autocomplete="off" class="form-control search-input" placeholder="Address" name="search-address" id="search-address">
+                                    <ul class="dropdown-menu dropdown-menu-index" id="address-search-box"></ul>
+                                    <ul class="dropdown-menu dropdown-menu-index" id="address-search-box-empty">
+                                        <li class="dropdown-item dropdown-item-insert">
+                                            <span class="muted-text">No results found for this location. </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-7 col-sm-12 col-xs-12">
+                                    <div class="input-group" id="search_group">
+                                        <input type="text" autocomplete="off" class="form-control search-input" placeholder="Search for Service" name="search-service"
+                                            id="search-service">
+                                        <ul class="dropdown-menu dropdown-menu-index" id="service-search-box"></ul>
+                                        <ul class="dropdown-menu dropdown-menu-index" id="service-search-box-empty">
+                                            <li class="dropdown-item dropdown-item-insert">
+                                                <span class="muted-text">No results found. </span><a href="javascript:;"
+                                                    data-toggle="modal" data-target="#insert-service-modal">Insert it!</a>
+                                            </li>
+                                        </ul>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-success search_button" value="Submit" type="submit"><i class="glyphicon glyphicon-search"></i>&nbsp;Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <main class="container main-container">
+        <div class="row row-fix-bottom">
+            <div class="col-md-5 visible-lg-block">
+                <img src="icons/my-guy.gif">
+            </div>
+            <div class="col-lg-7 col-md-12" id="index_info">
+                <h4>
+                    Το Products & services rating® είναι ο μεγαλύτερος ιστότοπος προβολής, βαθμολόγησης και κριτικής προϊόντων και υπηρεσιών
+                    παγκοσμίως και δίνει τη δυνατότητα στους χρήστες να βρουν το καλύτερο προϊόν ή υπηρεσία για εκείνους
+                    βάση της βαθμολογίας και των κριτικών που έχουν πραγματοποιηθεί απο άλλους χρήστες, καθως και να βαθμολογήσουν
+                    και να σχολιάσουν προϊόν ή υπηρεσία που έχουν δοκιμάσει και δεν υπάρχει στο site μας, προσθέτοντας τα
+                    μετά την εγραφή τους στη σελίδα μας.
+                </h4>
+            </div>
+        </div>
+        <div class="row">
+            <h4 class="addresses text-center">
+                <i class='glyphicon glyphicon-star-semi'></i> Best five products
+                <i class='glyphicon glyphicon-star-semi'></i>
+            </h4>
+            <div class="col-md-3 col-sm-12 text-center shadow-3 box-size green-background" id="p0">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+            <div class="col-md-3 col-sm-12 text-center shadow-3 box-size gray-background" id="p1">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+            <div class="col-md-3 col-sm-12 text-center shadow-3 box-size brown-background" id="p2">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-sm-12 text-center shadow-3 box-size blue-background box-left" id="p3">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+            <div class="col-md-5 col-sm-12 text-center shadow-3 box-size purple-background box-left" id="p4">
+                <b><h4 class="prod-name capitals"></h4></b>
+                <hr>
+                <span>Type: </span>
+                <h5 class="prod-type capitals inlineClass"></h5>
+                <hr>
+                <h5 class="prod-avg"></h5>
+            </div>
+        </div>
+        <div class="row">
+            <h4 class="addresses text-center">Best five services</h4>
+            <div class="col-md-4 col-sm-12 text-center shadow-3 green-background" id="first">
+                <h5 id="first-s-sen"></h5>
+                <hr>
+                <h5 id="first-s-n"></h5>
+                <hr>
+                <h5 id="first-s-a"></h5>
+                <hr>
+                <h5 id="first-s-r"></h5>
+            </div>
+            <div class="col-md-4 col-sm-12 text-center shadow-3 gray-background" id="second">
+                <h5 id="second-s-sen"></h5>
+                <hr>
+                <h5 id="second-s-n"></h5>
+                <hr>
+                <h5 id="second-s-a"></h5>
+                <hr>
+                <h5 id="second-s-r"></h5>
+            </div>
+            <div class="col-md-4 col-sm-12 text-center shadow-3 brown-background" id="third">
+                <h5 id="third-s-sen"></h5>
+                <hr>
+                <h5 id="third-s-n"></h5>
+                <hr>
+                <h5 id="third-s-a"></h5>
+                <hr>
+                <h5 id="third-s-r"></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 text-center shadow-3 blue-background" id="fourth">
+                <h5 id="fourth-s-sen"></h5>
+                <hr>
+                <h5 id="fourth-s-n"></h5>
+                <hr>
+                <h5 id="fourth-s-a"></h5>
+                <hr>
+                <h5 id="fourth-s-r"></h5>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center shadow-3 purple-background" id="fifth">
+                <h5 id="fifth-s-sen"></h5>
+                <hr>
+                <h5 id="fifth-s-n"></h5>
+                <hr>
+                <h5 id="fifth-s-a"></h5>
+                <hr>
+                <h5 id="fifth-s-r"></h5>
+            </div>
+        </div>
+    </main>
+</div>
