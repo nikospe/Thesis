@@ -5,7 +5,6 @@
     if(isset($_POST["product_name"])) $product_name = $_POST['product_name'];
     if(isset($_POST["description"])) $description = $_POST['description'];
 
-
     $stmt = $database_connection->prepare("INSERT INTO products (name, type, description) "
             . "VALUES (?, ?, ?) ");
     

@@ -19,7 +19,7 @@
     $response['stores'] = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     $response['mysql_error'] = mysqli_error($database_connection);
-
+        $response['id'] = $id;
     echo json_encode($response);
 
     $database_connection->close();

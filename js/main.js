@@ -221,13 +221,33 @@ $.post('ajax/get_best_products.php', {limit: 5}, function (response) {
         var index = response.products.indexOf(product);
         var $el = $('#p' + index);
         product.avg =  Number( Math.round( (product.avg/2) * 2 ) / 2 );
-
+        product.link = 'product.html?id=' + product.id;
+        $el.find('a').attr('href', product.link);
         $el.find('.prod-name').text(product.name); 
         $el.find('.prod-type').text(product.type); 
         $el.find('.prod-avg').html( drawRatingStars(product.avg) + '(' + product.avg + ')' ); 
     }
 
 }, 'json');
+$.post('ajax/get_best_services.php', {limit: 5}, function (response) {
+    if (response.error) {
+        alert(response.error);
+        return;
+    }
+
+    for ( var service of response.services ) {
+        var index = response.services.indexOf(service);
+        var $el = $('#s' + index);
+        service.avg =  Number( Math.round( (service.avg/2) * 2 ) / 2 );
+        service.link = 'service.html?search-address='+service.address+'&id='+service.id;
+        $el.find('a').attr('href', service.link);
+        $el.find('.store-name').text(service.name); 
+        $el.find('.serv-type').text(service.type); 
+        $el.find('.store-avg').html( drawRatingStars(service.avg) + '(' + service.avg + ')' ); 
+    }
+
+}, 'json');
+
 
 var autocomplete;
 function initAutocomplete() {
@@ -260,11 +280,24 @@ function addressSelected() {
 }
 
 var element = $('.test');
+var boxes = $('.box-left');
+var userActivity = $('#users-info');
+var userData = $('#users-activity');
+var prodRating = $('.rate-left');
+var inputRate = $('#rate-title');
+var prodStores = $('.marg-left');
+var navBar = $('.in');
 if (screen.width < 960) {
+    boxes.removeClass('box-left');
     element.removeClass('r-inline');
-}
-else {
-    element.addClass('r-inline');
+    userActivity.removeClass('fixed-pos');
+    userActivity.width('auto');
+    userActivity.css("left", "auto");
+    userData.width('auto');
+    userData.css("left", "auto");
+    prodRating.removeClass('rate-left');
+    inputRate.width('auto');
+    navBar.removeClass('in');
 }
 
 $(window).resize(function() {

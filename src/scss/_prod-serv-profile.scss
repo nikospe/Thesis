@@ -9,6 +9,9 @@
   color : $main-orange;
   margin-top: 25px;
 }
+.search-product-page {
+  margin-top: 12px;
+}
 .header_search {
   padding-top: 10px;
 }
@@ -86,8 +89,10 @@
   width: 750px;
 }
 .keep-right {
-  position: absolute;
-  left: 2%;
+  //position: absolute;
+  //left: 2%;
+  right: 700px;
+  margin-bottom: -160px;
 }
 .marg-left {
   margin-left: 30px;

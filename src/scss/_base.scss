@@ -137,9 +137,9 @@ hr {
 }
 
 .display-star {
-  color: #fde16d;
-  text-shadow: 0px 1px 1px darkgray;
-  font-size: xx-large;
+  color: #d47c34;
+  //text-shadow: 0px 1px 3px darkgray;
+  font-size: 27px;
 }
 .glyphicon-star-empty {
   color: darkgray;
@@ -163,8 +163,25 @@ hr {
 .box-size {
   width: 360px;
   height: 220px;
-  margin: 5px;
+  margin: 5px 10px 0;
+  margin-bottom: 20px;
+  left: 2%;
 }
 .box-left {
-  left: 15%;
+  left: 18%;
+}
+.box-background {
+  background: rgba(238,238,238,1);
+  background: linear-gradient(#ffffff 0%, rgb(212, 212, 212) 100%);
+}
+
+.prod-name {
+  min-height: 35px;
+  height: 35px;
+
+  margin-bottom: 0;
+}
+
+.serv-name {
+  @extend .prod-name;
 }

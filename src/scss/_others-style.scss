@@ -111,10 +111,12 @@
   box-shadow: 0 0 10px 1px rgba(0,0,0,0.3);
 }
 .activity-header{
-  background: #a7510b;
-  color: white;
+  //background: #a7510b;
+  background: linear-gradient(#fff 0%, #d4d4d4 100%);
+  //color: white;
   border: 1px solid #365899;
   padding: 7px;
+  text-align: center;
 }
 .fixed-pos{
   position: fixed;
@@ -136,11 +138,10 @@
   z-index: 10000;
   margin-top: 5px;
   box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
-  left: 35%;
   text-align: center;
   background: whitesmoke;
   padding-right: 25px;
-  margin-left: 17px;
+  margin-left: 409px;
   padding-bottom: 10px;
   width: 760px;
 

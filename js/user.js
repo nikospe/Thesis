@@ -1,25 +1,27 @@
-$(window).scroll( function() {
-    var element = $('#users-info');
-    var elem = $('#activity-head');
-    var height = 0;
-        if ( $(document).scrollTop() >= $('#users-activity').height() - 300 ) {
-            element.removeClass('fixed-pos');
-            element.addClass('absolute-pos');
-        }
-        else{
-            element.addClass('fixed-pos');
-            element.removeClass('absolute-pos');
-            
-        }
-        if ( $(document).scrollTop() >= $('#users-activity').height() - element.height() + 80 ) {
-            elem.removeClass('fixed-poss');
-            elem.addClass('absolute-poss');
-        }
-        else {
-            elem.addClass('fixed-poss');
-            elem.removeClass('absolute-poss');
-        }
-});
+if (screen.width > 1000) {
+    $(window).scroll( function() {
+        var element = $('#users-info');
+        var elem = $('#activity-head');
+        var height = 0;
+            if ( $(document).scrollTop() >= $('#users-activity').height() - 300 ) {
+                element.removeClass('fixed-pos');
+                element.addClass('absolute-pos');
+            }
+            else{
+                element.addClass('fixed-pos');
+                element.removeClass('absolute-pos');
+                
+            }
+            if ( $(document).scrollTop() >= $('#users-activity').height() - element.height() + 80 ) {
+                elem.removeClass('fixed-poss');
+                elem.addClass('absolute-poss');
+            }
+            else {
+                elem.addClass('fixed-poss');
+                elem.removeClass('absolute-poss');
+            }
+    });
+}
 
 $.post('ajax/get_session.php', null, function (data) {
     if(data.username){

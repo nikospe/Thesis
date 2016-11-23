@@ -35,31 +35,32 @@ function productRating() {
     }, 'json');
 }
 
-
-$(window).scroll( function() {
-    var element = $('.profile');
-    if ( $(document).scrollTop() > 128 ) {
-        element.removeClass('absolute'); 
-        var elemTop2 = $('.footer-header').offset().top - 145;
-        var height = $('.profile').height();
-        var width = $('.profile').width();
-        var temp = elemTop2 - height -50;
-        element.addClass('fixed');
-        $('.fixed').css('height', (height+30));
-        $('.fixed').css('width', (width+30));
-        if ( $(document).scrollTop() >= temp) {
-            element.removeClass('fixed');
-            element.addClass('bottom');
-        }
-        else{
+if (screen.width > 1000) {
+    $(window).scroll( function() {
+        var element = $('.profile');
+        if ( $(document).scrollTop() > 128 ) {
+            element.removeClass('absolute'); 
+            var elemTop2 = $('.footer-header').offset().top - 145;
+            var height = $('.profile').height();
+            var width = $('.profile').width();
+            var temp = elemTop2 - height -50;
             element.addClass('fixed');
-            element.removeClass('bottom');
+            $('.fixed').css('height', (height+30));
+            $('.fixed').css('width', (width+30));
+            if ( $(document).scrollTop() >= temp) {
+                element.removeClass('fixed');
+                element.addClass('bottom');
+            }
+            else{
+                element.addClass('fixed');
+                element.removeClass('bottom');
+            }
+        } else {
+            element.addClass('absolute');
+            element.removeClass('fixed');
         }
-    } else {
-        element.addClass('absolute');
-        element.removeClass('fixed');
-    }
-});
+    });
+}
 
 var element = $('.tores');
 if (screen.width < 960) {
@@ -92,14 +93,14 @@ if ( urlParams.hasOwnProperty('id') ) {
                 $('#product-type').html(product.type);
                 $('#product-description').html(product.description);
                 $('#element').attr("placeholder", product.name);
-                productId = product.id;
-                storesLoad();
-                productRating();
-                ShowProdRatings();
+                productId = product.id;                
             } 
             else {                
                 $('.for-display').hide();                
-            }        
+            } 
+            storesLoad();
+            productRating();
+            ShowProdRatings();       
         }, 'json');
 }
 else if ( !('' in urlParams) ) {
