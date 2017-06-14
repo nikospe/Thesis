@@ -27,13 +27,13 @@ function checkDivs () {
 
 var urlParams = getUrlParams();
 function getUrlParams() {
-  var query = location.search.substr(1);
-  var result = {};
-  query.split("&").forEach(function(part) {
-    var item = part.split("=");
-    result[item[0]] = decodeURIComponent(item[1]).replace(/\+/g,' ');
-  });
-  return result;
+    var query = location.search.substr(1);
+    var result = {};
+    query.split("&").forEach(function(part) {
+        var item = part.split("=");
+        result[item[0]] = decodeURIComponent(item[1]).replace(/\+/g,' ');
+    });
+    return result;
 }
 
 /**Check if data for loging in is correct */
@@ -137,6 +137,7 @@ $(document).ready(function(){
         });
     });
 }); 
+
 /**Functions to create the dropdown menus with data from db */
 function dropdownfunction(str, data){
     $('#'+str+'-search-box').html('');
@@ -156,6 +157,7 @@ function dropdownfunction(str, data){
         $('#'+str+'-search-box').show();
     }    
 }
+
 /** Remove dropdown menu on focus out */
 $('#search-product').on('focusout', function() {
     var str = 'product';
@@ -169,6 +171,7 @@ $('#search-address').on('focusout', function() {
     var str = 'address';
     put_value(str);
 });
+
 /**Function to hide dropdown menus or put the value to the field */
 function put_value(str){
     if ( $('#'+str+'-search-box-empty li a:active').html() == 'Insert it!' ) {
@@ -256,27 +259,6 @@ function initAutocomplete() {
     // When the user selects an address from the dropdown, populate the address
     // fields in the form.
     autocomplete.addListener('place_changed', addressSelected);
-}
-
-function addressSelected() {
-    // var place = autocomplete.getPlace();
-
-    // var temp = place.formatted_address.split(",");
-    // var address = temp[0];
-    // var regionPostalCode = temp[1];
-
-    //  var mdata = {'id' : place.id, 'url' : place.url,
-    //  'streetNumber' : place.address_components[0].long_name,
-    //  'streetName' : place.address_components[1].long_name,
-    //  'areaName' : place.address_components[2].long_name,
-    //  'countryName' : place.address_components[6].long_name,
-    //  'postalcode' : place.address_components[7].long_name};
-    // if ( !place.address_components[7].long_name ) {
-    //     mdata = {'town' : place.address_components[0].long_name,
-    //     'area' : place.address_components[3].long_name,
-    //     'countryName' : place.address_components[6].long_name};
-    // }
-    // console.log(mdata);
 }
 
 var element = $('.test');

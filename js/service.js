@@ -13,7 +13,6 @@ if ( urlParams.hasOwnProperty('id') ) {
             $('.for-display').show();
             var service = data.service;
             $('#service-searched').html(service.name);
-            //$('#searched-address').html(service.address);
             serviceId = service.id;
             serviceName = service.name;
             $('#element').attr("placeholder", service.name);
@@ -42,7 +41,6 @@ else if ( !('' in urlParams) ) {
             $('.for-display').show();            
             var service = data.service;
             $('#service-searched').html(service.name);
-            //$('#searched-address').html(service.address);
             serviceId = service.id;
             serviceName = service.name;
             $('#element').attr("placeholder", service.name);

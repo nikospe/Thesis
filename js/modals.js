@@ -30,7 +30,6 @@ $('.form-add-store').submit(function (event) {
             formData = formData.concat( '&service=service' );
         }
         $.post('ajax/add_new_store.php', formData, function (data) {
-            //console.log(data);
             if (data.mysql_query_status) {
                 window.location = window.location.href;
             } else if (data.mysql_error) {
