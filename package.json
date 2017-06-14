@@ -1,7 +1,7 @@
 {
   "name": "products-rating",
   "version": "0.1.0",
-  "description": "mia vlakia kai mis",
+  "description": "Portal for product and services for review and rating",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
